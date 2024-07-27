@@ -1,0 +1,7 @@
+package com.team10.services;
+
+import com.team10.dto.UserDTO;
+
+public interface IUserService {
+	public void registerUser(UserDTO userDTO);
+}

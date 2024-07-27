@@ -1,0 +1,9 @@
+package com.team10.services;
+
+import org.hibernate.dialect.lock.OptimisticEntityLockException;
+
+import com.team10.dto.UserDTO;
+
+public interface IUserService {
+	public void registerUser(UserDTO userDTO) throws IllegalArgumentException, OptimisticEntityLockException;
+}

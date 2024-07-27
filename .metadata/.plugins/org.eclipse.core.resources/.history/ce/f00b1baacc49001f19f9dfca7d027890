@@ -1,0 +1,10 @@
+package com.team10.services;
+
+import java.util.List;
+
+
+public interface IStateAndUTsService {
+	
+	public List<String> getStateAndUTsList();
+	
+}

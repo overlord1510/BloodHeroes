@@ -1,0 +1,19 @@
+package com.team10.services;
+
+import com.team10.dto.UserDTO;
+import com.team10.entity.User;
+import com.team10.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+public class UserServiceImpl implements IUserService {
+
+	private final UserRepository userRepository;
+
+	@Override
+	public void registerUser(UserDTO userDTO) {
+		userRepository.save(User.builder().build());
+	}
+
+}

@@ -1,0 +1,13 @@
+package com.team10.services;
+
+import com.team10.dto.UserDTO;
+
+public class UserServiceImpl implements UserService {
+
+	@Override
+	public void registerUser(UserDTO userDTO) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

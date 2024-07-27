@@ -1,0 +1,11 @@
+package com.team10.dto;
+
+import java.util.List;
+
+public class UserDTO {
+	Long id;
+	String username;
+	String email;
+	String password;
+	List<String> contact;
+}

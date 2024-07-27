@@ -1,0 +1,21 @@
+package com.team10.services;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.team10.repository.StateAndUTsRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public interface IStateAndUTsService {
+
+	private final StateAndUTsRepository stateAndUTsRepository;
+	
+	public List<String> getStateAndUTsList() {
+		
+	}
+	
+}

@@ -1,0 +1,11 @@
+package com.team10.entity;
+
+import java.util.List;
+
+public class StateAndUTs {
+
+	private Long id;
+	private String name;
+	private List<String> districts;
+	
+}

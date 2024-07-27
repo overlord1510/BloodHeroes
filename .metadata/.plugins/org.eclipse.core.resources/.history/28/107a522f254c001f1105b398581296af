@@ -1,0 +1,10 @@
+package com.team10.entity;
+
+public class Donour {
+
+	private Long id;
+	private User user;
+	private StateAndUTs stateAndUTs;
+	private String gender;
+
+}

@@ -1,0 +1,42 @@
+import java.sql.SQLException;
+
+import org.springframework.core.NestedExceptionUtils;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.team10.dto.UserDTO;
+
+import lombok.NonNull;
+// ...
+
+@PostMapping("/register")
+public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
+	try {
+		userService.registerUser(userDTO);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+	} catch (DataIntegrityViolationException e) {
+		// Extract the root cause (usually an SQLException)
+		Throwable rootCause = ValidationUtil.getRootCause(e);
+		if (rootCause instanceof SQLException) {
+			int errorCode = ((SQLException) rootCause).getErrorCode();
+			System.err.println("SQL Error Code: " + errorCode);
+		}
+		e.printStackTrace();
+		return new ResponseEntity<>(HttpStatus.CONFLICT);
+	} catch (OptimisticLockingFailureException | IllegalArgumentException e) {
+		// Handle other exceptions here
+		e.printStackTrace();
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+}
+
+// Utility method to get the root cause
+@NonNull
+private static Throwable getRootCause(@NonNull Throwable t) {
+	Throwable rootCause = NestedExceptionUtils.getRootCause(t);
+	return rootCause != null ? rootCause : t;
+}
