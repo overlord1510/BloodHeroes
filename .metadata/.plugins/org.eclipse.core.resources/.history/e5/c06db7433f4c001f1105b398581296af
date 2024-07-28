@@ -1,0 +1,26 @@
+package com.team10.services;
+
+import com.team10.dto.DonourDTO;
+import com.team10.entity.Donour;
+import com.team10.repository.DonourRepository;
+
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+public class DonourServiceImpl implements IDonourService{
+
+	private final DonourRepository donourRepository;
+	
+	@Transactional
+	@Override
+	public void saveDonour(DonourDTO donourDTO) {
+		//@formatter-off
+		donourRepository.save(Donour.builder()
+				.user(donourDTO.getUser())
+				
+				.build());
+		//@formatter-on
+	}
+
+}

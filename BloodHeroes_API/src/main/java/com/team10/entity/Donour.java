@@ -1,5 +1,6 @@
 package com.team10.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Donour {
 	@Column(name = "donour_id")
 	private Long id;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User user;
 	

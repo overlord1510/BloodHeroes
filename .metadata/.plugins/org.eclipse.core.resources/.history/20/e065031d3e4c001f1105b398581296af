@@ -1,0 +1,18 @@
+package com.team10.services;
+
+import com.team10.dto.DonourDTO;
+import com.team10.repository.DonourRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+public class DonourServiceImpl implements IDonourService{
+
+	private final DonourRepository donourRepository;
+	
+	@Override
+	public void saveDonour(DonourDTO donourDTO) {
+		
+	}
+
+}

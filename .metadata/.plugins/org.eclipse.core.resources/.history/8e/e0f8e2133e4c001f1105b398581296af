@@ -1,0 +1,13 @@
+package com.team10.services;
+
+import com.team10.dto.DonourDTO;
+
+public class DonourServiceImpl implements IDonourService{
+
+	@Override
+	public void saveDonour(DonourDTO donourDTO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
