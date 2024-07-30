@@ -1,0 +1,11 @@
+package com.team10.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.team10.entity.RefreshToken;
+
+public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long> {
+
+	void deleteByUser_id(int userId);
+
+}

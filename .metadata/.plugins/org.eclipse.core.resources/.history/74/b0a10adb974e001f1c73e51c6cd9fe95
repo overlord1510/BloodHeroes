@@ -1,0 +1,37 @@
+package com.team10.controller;
+
+import java.util.Date;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.service.annotation.GetExchange;
+
+import com.team10.dto.AuthenticationResponse;
+import com.team10.entity.RefreshToken;
+import com.team10.services.IRefreshTokenService;
+
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/refresh")
+@RequiredArgsConstructor
+public class RefreshTokenController {
+
+	private final IRefreshTokenService refreshTokenService;
+
+	@GetMapping
+	ResponseEntity<AuthenticationResponse> refreshToken(@CookieValue(defaultValue = "rToken") String rToken,
+			HttpServletResponse response) {
+		RefreshToken refreshTokenByToken = refreshTokenService.getRefreshTokenByToken(rToken);
+		if (refreshTokenByToken != null
+				&& refreshTokenByToken.getExpiration().before(new Date(System.currentTimeMillis()))) {
+
+		}
+
+	}
+
+}

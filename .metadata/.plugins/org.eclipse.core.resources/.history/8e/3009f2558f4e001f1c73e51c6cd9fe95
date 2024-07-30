@@ -1,0 +1,42 @@
+package com.team10.services;
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import com.team10.entity.RefreshToken;
+import com.team10.entity.User;
+import com.team10.repository.RefreshTokenRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class RefreshTokenServiceImpl implements IRefreshTokenService {
+	private final RefreshTokenRepository refreshTokenRepository;
+
+	@Value("${cookie.expiration}")
+	private long EXPIRATION;
+
+	@Override
+	public RefreshToken getRefreshTokenByUser(User user) {
+		return null;
+	}
+	
+	@Override
+	public void saveRefreshToken(String token, User user) {
+		//@formatter:off
+		refreshTokenRepository.save(RefreshToken.builder()
+				.user(user)
+				.token(token)
+				.expiration(new Date(System.currentTimeMillis()+EXPIRATION*1000))
+				.build());
+		//@formatter:on
+	}
+
+	@Override
+	public void deleteRefreshToken(User user) {
+		refreshTokenRepository.deleteByUser_id(user.getId());
+	}
+}

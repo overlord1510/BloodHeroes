@@ -2,6 +2,7 @@ package com.team10.services;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.team10.dto.DonourDTO;
@@ -18,18 +19,21 @@ import lombok.RequiredArgsConstructor;
 public class DonourServiceImpl implements IDonourService {
 
 	private final DonourRepository donourRepository;
+	
+	private final PasswordEncoder passwordEncoder;
 
 	@Transactional
 	@Override
 	public void saveDonour(DonourDTO donourDTO)
 			throws IllegalArgumentException, OptimisticLockingFailureException, DataIntegrityViolationException {
+		
 		// @formatter:off
 		donourRepository.save(
 				Donour.builder()
 				.user(User.builder()
 						.name(donourDTO.getUserDTO().getName())
 						.email(donourDTO.getUserDTO().getEmail())
-						.password(donourDTO.getUserDTO().getPassword())
+						.password(passwordEncoder.encode(donourDTO.getUserDTO().getPassword()))
 						.contacts(donourDTO.getUserDTO().getContacts())
 						.role(ROLE.DONOUR)
 						.build())

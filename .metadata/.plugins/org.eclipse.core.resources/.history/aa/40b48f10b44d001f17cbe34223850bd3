@@ -1,0 +1,15 @@
+#DataSource Configuration
+spring.application.name=BloodHeroes_API
+spring.datasource.url=jdbc:mysql://localhost:3306/bloodheroes
+spring.datasource.username=root
+spring.datasource.password=A@arshad123
+
+#JPA Configuration
+spring.jpa.open-in-view=true
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.properties.hibernate.format_sql=true
+
+#jwt Config
+jwt.secret.key=eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcyMjI2MTg0OSwiaWF0IjoxNzIyMjYxODQ5fQ.ydpLybuhIIS-r0YBuAsesH1taQybnWAbk3gfEK0fcko
+jwt.token.expiration=180000

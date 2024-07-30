@@ -19,7 +19,8 @@ public class UserServiceImpl implements IUserService {
 
 	@Transactional
 	@Override
-	public void registerUser(UserDTO userDTO) throws IllegalArgumentException, OptimisticLockingFailureException,DataIntegrityViolationException {
+	public void registerUser(UserDTO userDTO)
+			throws IllegalArgumentException, OptimisticLockingFailureException, DataIntegrityViolationException {
 
 		//@formatter:off	
 				userRepository.save(User.builder()
@@ -29,5 +30,11 @@ public class UserServiceImpl implements IUserService {
 						.contacts(userDTO.getContacts())
 						.build());
 		//@formatter:on
+	}
+
+	@Override
+	public User getUserByEmail(String email) throws IllegalArgumentException {
+		return userRepository.findByEmail(email)
+				.orElseThrow(() -> new IllegalArgumentException("User not found with email" + email));
 	}
 }

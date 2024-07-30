@@ -1,0 +1,19 @@
+package com.team10.services;
+
+import org.springframework.http.ResponseCookie;
+
+public class CookieServiceImpl implements ICookieService {
+
+	@Override
+	public ResponseCookie createCookie(String refreshToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseCookie deleteCookie() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

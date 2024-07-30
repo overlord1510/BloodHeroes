@@ -1,0 +1,9 @@
+package com.team10.services;
+
+import org.springframework.http.ResponseCookie;
+
+public interface ICookieService {
+
+	public ResponseCookie createCookie(String refreshToken);
+	
+}

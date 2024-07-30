@@ -1,0 +1,35 @@
+package com.team10.services;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
+
+import com.team10.config.JwtUtils;
+import com.team10.dto.AuthenticationRequest;
+import com.team10.dto.AuthenticationResponse;
+import com.team10.entity.User;
+
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class AuthenticationServiceImpl implements IAuthenticationService {
+	
+	private final AuthenticationManager authenticationManager;
+	private final IUserService iUserService;
+	private final JwtUtils jwtUtils;
+
+	@Override
+	public AuthenticationResponse authenticateAndCreateCookie(AuthenticationRequest request,
+			HttpServletResponse response) {
+		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+		if(authentication.isAuthenticated()) {
+			User userByEmail = iUserService.getUserByEmail(request.getEmail());
+			String token = jwtUtils.generateToken(userByEmail);
+		}
+		return null;
+	}
+
+}

@@ -1,7 +1,5 @@
 package com.team10.dto;
 
-import java.util.List;
-
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,5 +10,5 @@ public class UserDTO {
 	String name;
 	String email;
 	String password;
-	List<String> contacts;
+	String contacts;
 }

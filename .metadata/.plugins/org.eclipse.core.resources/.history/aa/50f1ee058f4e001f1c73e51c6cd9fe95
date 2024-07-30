@@ -1,0 +1,10 @@
+package com.team10.services;
+
+import com.team10.entity.User;
+
+public interface IRefreshTokenService {
+
+	public void saveRefreshToken(String token,User user);
+	public void deleteRefreshToken(User user);
+	
+}

@@ -1,0 +1,11 @@
+#DataSource Configuration
+spring.application.name=BloodHeroes_API
+spring.datasource.url=jdbc:mysql://localhost:3306/bloodheroes
+spring.datasource.username=root
+spring.datasource.password=A@arshad123
+
+#JPA Configuration
+spring.jpa.open-in-view=true
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.properties.hibernate.format_sql=true

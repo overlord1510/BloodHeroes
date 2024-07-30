@@ -1,0 +1,29 @@
+package com.team10.services;
+
+import org.springframework.boot.web.server.Cookie.SameSite;
+import org.springframework.http.ResponseCookie;
+
+public class CookieServiceImpl implements ICookieService {
+	
+	@
+	private final long EXPIRATION;
+
+	@Override
+	public ResponseCookie createCookie(String refreshToken) {
+		//@formatter:off
+		return ResponseCookie.from("rToken", refreshToken)
+				.httpOnly(true)
+				.sameSite(SameSite.NONE.toString())
+				.secure(true)
+				.path("/")
+				.maxAge(EXPIRATION)
+				.build();
+		//@formatter:on
+	}
+
+	@Override
+	public ResponseCookie deleteCookie() {
+		return null;
+	}
+
+}

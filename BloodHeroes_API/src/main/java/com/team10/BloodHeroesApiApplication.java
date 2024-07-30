@@ -16,14 +16,23 @@ import lombok.RequiredArgsConstructor;
 public class BloodHeroesApiApplication {
 
 	private final StateAndUTsRepository stateAndUTsRepository;
+//	private final UserRepository userRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BloodHeroesApiApplication.class, args);
 	}
 
+//	@PostConstruct
+//	public void check() {
+//		Optional<User> byEmail = userRepository.findByEmail("john@example.com");
+//		System.out.println(byEmail.toString());
+//	}
+
 	@PostConstruct
 	public void init() {
 		// Clear existing data
+		if (stateAndUTsRepository.findAll().size() > 0)
+			return;
 		stateAndUTsRepository.deleteAll();
 
 		// Create and save states and union territories with their districts
@@ -219,5 +228,16 @@ public class BloodHeroesApiApplication {
 								"South 24 Parganas", "Uttar Dinajpur"))
 						.build()));
 	}
+
+//	@PostConstruct
+//	public void secretKeyGenerator() throws NoSuchAlgorithmException, InvalidKeySpecException {
+//		String orginalString="BloodHeroesTeam10AECIT2025";
+//		byte[] salt=new byte[64];
+//		PBEKeySpec spec = new PBEKeySpec(orginalString.toCharArray(),salt,10,512);
+//		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+//		byte[] encoded = factory.generateSecret(spec).getEncoded();
+//		String encodeToString = Base64.getEncoder().encodeToString(encoded);
+//		System.out.println(encodeToString);
+//	}
 
 }
