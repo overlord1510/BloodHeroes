@@ -23,9 +23,15 @@ public class StateAndUTsServiceImpl implements IStateAndUTsService {
 	}
 
 	@Override
-	public List<String> getDistrictList(String stateName)throws NoSuchElementException {
+	public List<String> getDistrictList(String stateName) throws NoSuchElementException {
 		StateAndUTs stateAndUTs = stateAndUTsRepository.findByName(stateName).orElseThrow();
 		return stateAndUTs.getDistricts();
+	}
+
+	@Override
+	public StateAndUTs getStateAndUtsById(Long id) throws IllegalArgumentException {
+		return stateAndUTsRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("State not found with id : " + id));
 	}
 
 }

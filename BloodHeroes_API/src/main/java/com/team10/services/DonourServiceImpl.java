@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.team10.dto.DonourDTO;
 import com.team10.entity.Donour;
 import com.team10.entity.ROLE;
+import com.team10.entity.StateAndUTs;
 import com.team10.entity.User;
 import com.team10.repository.DonourRepository;
 
@@ -19,29 +20,34 @@ import lombok.RequiredArgsConstructor;
 public class DonourServiceImpl implements IDonourService {
 
 	private final DonourRepository donourRepository;
-	
+
 	private final PasswordEncoder passwordEncoder;
+
+	private final IStateAndUTsService stateAndUTsService;
 
 	@Transactional
 	@Override
 	public void saveDonour(DonourDTO donourDTO)
 			throws IllegalArgumentException, OptimisticLockingFailureException, DataIntegrityViolationException {
-		
+
+		StateAndUTs stateAndUtsById = stateAndUTsService.getStateAndUtsById(donourDTO.getStateAndUTsID());
+
 		// @formatter:off
 		donourRepository.save(
 				Donour.builder()
 				.user(User.builder()
-						.name(donourDTO.getUserDTO().getName())
-						.email(donourDTO.getUserDTO().getEmail())
-						.password(passwordEncoder.encode(donourDTO.getUserDTO().getPassword()))
-						.contacts(donourDTO.getUserDTO().getContacts())
+						.name(donourDTO.getName())
+						.email(donourDTO.getEmail())
+						.password(passwordEncoder.encode(donourDTO.getPassword()))
+						.contacts(donourDTO.getContacts())
 						.role(ROLE.DONOUR)
+						.isActivated(true)
 						.build())
 				.gender(donourDTO.getGender())
 				.pinCode(donourDTO.getPinCode())
 				.addressLine1(donourDTO.getAddressLine1())
 				.addressLine2(donourDTO.getAddressLine2())
-				.stateAndUTs(donourDTO.getStateAndUTs())
+				.stateAndUTs(stateAndUtsById)
 				.district(donourDTO.getDistrict())
 				.build());
 		// @formatter:on

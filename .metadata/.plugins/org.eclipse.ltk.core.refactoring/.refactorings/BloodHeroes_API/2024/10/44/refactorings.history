@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.team10.vo.HospitalDTO.java&apos; to &apos;HospitalVO.java&apos;&#x0D;&#x0A;- Original project: &apos;BloodHeroes_API&apos;&#x0D;&#x0A;- Original element: &apos;com.team10.vo.HospitalDTO.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.team10.vo.HospitalVO.java&apos;" description="Rename compilation unit &apos;HospitalDTO.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.team10.vo{HospitalDTO.java" name="HospitalVO.java" references="false" stamp="1730103130475" version="1.0"/>
+</session>

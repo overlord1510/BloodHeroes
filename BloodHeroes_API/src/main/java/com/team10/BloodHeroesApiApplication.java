@@ -4,9 +4,13 @@ import java.util.Arrays;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.team10.entity.ROLE;
 import com.team10.entity.StateAndUTs;
+import com.team10.entity.User;
 import com.team10.repository.StateAndUTsRepository;
+import com.team10.repository.UserRepository;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -16,17 +20,26 @@ import lombok.RequiredArgsConstructor;
 public class BloodHeroesApiApplication {
 
 	private final StateAndUTsRepository stateAndUTsRepository;
-//	private final UserRepository userRepository;
+	private final UserRepository userRepository;
+	private final PasswordEncoder encoder;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BloodHeroesApiApplication.class, args);
 	}
 
-//	@PostConstruct
-//	public void check() {
-//		Optional<User> byEmail = userRepository.findByEmail("john@example.com");
-//		System.out.println(byEmail.toString());
-//	}
+	@PostConstruct
+	public void makeSuperAdmin() {
+		//@formatter:off
+			userRepository.save(User.builder()
+					.name("SuperAdmin")
+					.email("mdasadali789@gmail.com")
+					.password(encoder.encode("admin123"))
+					.contacts("7586090356")
+					.role(ROLE.ADMIN)
+					.isActivated(true)
+					.build());
+		//@formatter:on
+	}
 
 	@PostConstruct
 	public void init() {

@@ -37,4 +37,10 @@ public class UserServiceImpl implements IUserService {
 		return userRepository.findByEmail(email)
 				.orElseThrow(() -> new IllegalArgumentException("User not found with email" + email));
 	}
+
+	@Transactional
+	@Override
+	public void acceptUser(Long id) {
+		userRepository.acceptHospital(id);
+	}
 }

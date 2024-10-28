@@ -18,7 +18,7 @@ public class SecurityConfig {
 
 	private final AuthenticationProvider authenticationProvider;
 	private final JwtAuthFilter authFilter;
-	
+
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		//@formatter:off
@@ -30,7 +30,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests(authorize->
 					authorize
 						.requestMatchers("/api/auth/**","/api/refresh").permitAll()
-						.requestMatchers("/api/donour/register","/api/organization/register").permitAll()
+						.requestMatchers("/api/donour/register","/api/hospital/register").permitAll()
 						.anyRequest().authenticated()
 					)
 				.sessionManagement(mgmt->
@@ -38,7 +38,11 @@ public class SecurityConfig {
 						.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 					)
 				.authenticationProvider(authenticationProvider)
-				.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
+				.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+				.exceptionHandling(excpt->
+					excpt
+						.authenticationEntryPoint(new CustomAuthenticationEntryPoint())
+					);
 				
 		//@formatter:on
 		return http.build();

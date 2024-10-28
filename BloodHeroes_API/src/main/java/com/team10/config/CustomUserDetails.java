@@ -10,10 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.team10.entity.User;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
-public class CustomUserDetails implements UserDetails{
-	
+@Slf4j
+public class CustomUserDetails implements UserDetails {
+
 	/**
 	 * 
 	 */
@@ -34,7 +36,7 @@ public class CustomUserDetails implements UserDetails{
 	public String getUsername() {
 		return user.getEmail();
 	}
-	
+
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
@@ -55,8 +57,7 @@ public class CustomUserDetails implements UserDetails{
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+		return user.isActivated();
 	}
 
 }

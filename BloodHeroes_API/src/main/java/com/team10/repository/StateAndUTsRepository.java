@@ -10,4 +10,6 @@ public interface StateAndUTsRepository extends JpaRepository<StateAndUTs, Long> 
 
 	Optional<StateAndUTs> findByName(String name);
 
+	Optional<StateAndUTs> findById(Long id);
+
 }

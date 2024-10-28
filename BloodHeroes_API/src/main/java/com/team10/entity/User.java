@@ -35,14 +35,14 @@ public class User {
 	@Column(name = "password", nullable = false)
 	private String password;
 
-//    @ElementCollection
-//    @CollectionTable(name = "user_contacts", joinColumns = @JoinColumn(name = "user_id"))
-//    private List<String> contacts;
 	@Column(name = "contact", nullable = false)
 	private String contacts;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role", nullable = false)
 	private ROLE role;
+
+	@Column(name = "isActivated", nullable = false)
+	private boolean isActivated;
 
 }

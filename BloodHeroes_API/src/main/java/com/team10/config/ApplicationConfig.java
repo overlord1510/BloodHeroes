@@ -20,6 +20,7 @@ import com.team10.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
@@ -35,8 +36,9 @@ public class ApplicationConfig {
 			public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 				log.info("Inside Load By Username");
 				User user = userRepository.findByEmail(username)
-						.orElseThrow(() -> new IllegalArgumentException("Username not found"));
+						.orElseThrow(() -> new UsernameNotFoundException("Username not found : " + username));
 				log.info(user.getEmail());
+
 				return new CustomUserDetails(user);
 			}
 		};
@@ -54,16 +56,18 @@ public class ApplicationConfig {
 		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 		return daoAuthenticationProvider;
 	}
-	
+
 	@Bean
-	AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+	AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+			throws Exception {
 		return authenticationConfiguration.getAuthenticationManager();
 	}
-	
+
 	@Bean
 	static RoleHierarchy roleHierarchy() {
-		RoleHierarchyImpl hierarchy = RoleHierarchyImpl.fromHierarchy(ROLE.ADMIN+">"+ROLE.ORGANIZATION_MANAGER+"\n"+ROLE.ORGANIZATION_MANAGER+">"+ROLE.DONOUR);
+		RoleHierarchyImpl hierarchy = RoleHierarchyImpl.fromHierarchy(
+				ROLE.ADMIN + ">" + ROLE.ORGANIZATION_MANAGER + "\n" + ROLE.ORGANIZATION_MANAGER + ">" + ROLE.DONOUR);
 		return hierarchy;
 	}
-	
+
 }
