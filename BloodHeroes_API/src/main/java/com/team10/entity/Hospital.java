@@ -39,6 +39,13 @@ public class Hospital {
 
 	@Column(nullable = false)
 	private Integer bedCapacity;
+	
+	@ManyToOne
+	@JoinColumn(name = "state_id")
+	private StateAndUTs stateAndUTs;
+	
+	@Column(name = "district")
+	private String district;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "service_id", referencedColumnName = "service_id")

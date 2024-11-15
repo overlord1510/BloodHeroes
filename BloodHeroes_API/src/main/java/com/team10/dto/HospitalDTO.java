@@ -24,4 +24,6 @@ public class HospitalDTO {
 	private Boolean pharmacyAvailable;
 	private Boolean bloodBankAvailable;
 	private Integer numberOfOperatingTheaters;
+	private Long stateAndUTsID;
+	private String district;
 }

@@ -2976,3 +2976,32 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.springfra
 2024-10-28 16:55:50,516 [Worker-159: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\mdasa\OneDrive\Desktop\BloodHeroes\BloodHeroes_API\src\test\resources
 2024-10-28 16:59:58,257 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@76296375{STOPPING}[12.0.9,sto=0]
 2024-10-28 16:59:58,266 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@29ddba3b{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2024-11-04 23:10:36,589 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-11-04 23:10:37,507 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Updating Gradle version information cache failed. Using outdated cache.
+2024-11-15 17:23:14,583 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-11-15 17:24:39,703 [Worker-0: Launching BloodHeroes_API - BloodHeroesApiApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:24:39,755 [Worker-0: Launching BloodHeroes_API - BloodHeroesApiApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:24:39,763 [Worker-0: Launching BloodHeroes_API - BloodHeroesApiApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\mdasa\OneDrive\Desktop\BloodHeroes\BloodHeroes_API\src\test\resources
+2024-11-15 17:36:23,661 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-11-15 17:38:50,135 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-12.0.9; built: 2024-05-03T13:03:17.262Z; git: efe8023327e67287f9bfd006700e6a71d45b5dd6; jvm 22.0.1+8
+2024-11-15 17:38:50,200 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@5ff8a7c6{/help,/help,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@324e1415{STARTED}}
+2024-11-15 17:38:50,201 [Start Help Server] INFO  o.e.j.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-15 17:38:50,226 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@3217f5bb{HTTP/1.1, (http/1.1)}{127.0.0.1:50638}
+2024-11-15 17:38:50,243 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started oejs.Server@421ad394{STARTING}[12.0.9,sto=0] @164634ms
+2024-11-15 17:41:39,161 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:41:39,184 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:41:39,190 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\mdasa\OneDrive\Desktop\BloodHeroes\BloodHeroes_API\src\test\resources
+2024-11-15 17:46:50,674 [Worker-36: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:46:50,697 [Worker-36: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:46:50,703 [Worker-36: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\mdasa\OneDrive\Desktop\BloodHeroes\BloodHeroes_API\src\test\resources
+2024-11-15 17:49:47,080 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:49:47,087 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:49:47,091 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\mdasa\OneDrive\Desktop\BloodHeroes\BloodHeroes_API\src\test\resources
+2024-11-15 17:54:29,362 [Worker-36: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:54:29,370 [Worker-36: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:54:29,375 [Worker-36: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\mdasa\OneDrive\Desktop\BloodHeroes\BloodHeroes_API\src\test\resources
+2024-11-15 17:55:31,199 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:55:31,209 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-11-15 17:55:31,215 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\mdasa\OneDrive\Desktop\BloodHeroes\BloodHeroes_API\src\test\resources
+2024-11-15 18:01:02,342 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@421ad394{STOPPING}[12.0.9,sto=0]
+2024-11-15 18:01:02,350 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@3217f5bb{HTTP/1.1, (http/1.1)}{127.0.0.1:0}

@@ -25,4 +25,6 @@ public class HospitalVO {
 	private Boolean pharmacyAvailable;
 	private Boolean bloodBankAvailable;
 	private Integer numberOfOperatingTheaters;
+	private String state;
+	private String district;
 }

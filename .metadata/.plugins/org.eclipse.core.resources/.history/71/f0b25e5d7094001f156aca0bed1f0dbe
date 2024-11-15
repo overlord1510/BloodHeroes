@@ -1,5 +1,0 @@
-package com.team10.customExceptions;
-
-public class UserNotEnabledException {
-
-}

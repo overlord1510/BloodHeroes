@@ -12,6 +12,7 @@ import com.team10.dto.HospitalDTO;
 import com.team10.entity.Hospital;
 import com.team10.entity.HospitalService;
 import com.team10.entity.ROLE;
+import com.team10.entity.StateAndUTs;
 import com.team10.entity.User;
 import com.team10.repository.HospitalRepository;
 import com.team10.vo.HospitalVO;
@@ -25,12 +26,15 @@ public class HospitalServiceImpl implements IHospitalService {
 
 	private final HospitalRepository hospitalRepository;
 	private final PasswordEncoder passwordEncoder;
+	private final IStateAndUTsService stateAndUTsService;
 
 	@Transactional
 	@Override
 	public void saveHospital(HospitalDTO hospitalDTO)
 			throws IllegalArgumentException, OptimisticLockingFailureException, DataIntegrityViolationException {
 
+		StateAndUTs stateAndUtsById = stateAndUTsService.getStateAndUtsById(hospitalDTO.getStateAndUTsID());
+		
 		//@formatter:off
 		hospitalRepository.save(Hospital.builder()
 				.user(User.builder()
@@ -41,6 +45,8 @@ public class HospitalServiceImpl implements IHospitalService {
 						.role(ROLE.ORGANIZATION_MANAGER)
 						.isActivated(false)
 						.build())
+				.stateAndUTs(stateAndUtsById)
+				.district(hospitalDTO.getDistrict())
 				.registrationNumber(hospitalDTO.getRegistrationNumber())
 				.hospitalType(hospitalDTO.getHospitalType())
 				.dateOfEstablishment(hospitalDTO.getDateOfEstablishment())
@@ -83,6 +89,8 @@ public class HospitalServiceImpl implements IHospitalService {
 								.pharmacyAvailable(hospital.getHospitalService().getPharmacyAvailable())
 								.bloodBankAvailable(hospital.getHospitalService().getBloodBankAvailable())
 								.numberOfOperatingTheaters(hospital.getHospitalService().getNumberOfOperatingTheaters())
+								.state(hospital.getStateAndUTs().getName())
+								.district(hospital.getDistrict())
 								
 							.build();
 				}
