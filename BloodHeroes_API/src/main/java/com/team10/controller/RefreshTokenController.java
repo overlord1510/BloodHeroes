@@ -31,14 +31,14 @@ public class RefreshTokenController {
 	private final JwtUtils jwtUtils;
 
 	@GetMapping
-	ResponseEntity<?> refreshToken(@CookieValue(defaultValue = "rToken") String rToken, HttpServletResponse response) {
+	ResponseEntity<?> refreshToken(@CookieValue(defaultValue = "rToken") String rToken, HttpServletResponse response,boolean rememberMe) {
 		RefreshToken refreshTokenByToken = refreshTokenService.getRefreshTokenByToken(rToken);
 		if (refreshTokenByToken != null
 				&& refreshTokenByToken.getExpiration().after(new Date(System.currentTimeMillis()))) {
 			refreshTokenService.deleteRefreshToken(refreshTokenByToken.getUser());
 			String newToken = UUID.randomUUID().toString();
 			refreshTokenService.saveRefreshToken(newToken, refreshTokenByToken.getUser());
-			cookieService.createCookie(newToken, response);
+			cookieService.createCookie(newToken, response,rememberMe);
 			String token = jwtUtils.generateToken(refreshTokenByToken.getUser());
 			//@formatter:off
 			return new ResponseEntity<AuthenticationResponse>(AuthenticationResponse.builder()
@@ -49,7 +49,7 @@ public class RefreshTokenController {
 			//@formatter:on
 		}
 		cookieService.deleteCookie(response);
-		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
 
 }

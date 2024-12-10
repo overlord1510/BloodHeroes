@@ -13,7 +13,10 @@ public class CookieServiceImpl implements ICookieService {
 	private long EXPIRATION;
 
 	@Override
-	public void createCookie(String refreshToken, HttpServletResponse response) {
+	public void createCookie(String refreshToken, HttpServletResponse response,boolean rememberMe) {
+		if(rememberMe) {
+			EXPIRATION=2419200L;
+		}
 		//@formatter:off
 		 ResponseCookie cookie = ResponseCookie.from("rToken", refreshToken)
 				.httpOnly(true)

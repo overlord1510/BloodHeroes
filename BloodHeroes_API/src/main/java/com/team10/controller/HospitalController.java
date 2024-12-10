@@ -6,12 +6,12 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.team10.dto.BloodDonationRequest;
 import com.team10.dto.HospitalDTO;
 import com.team10.services.IHospitalService;
 
@@ -43,8 +43,8 @@ public class HospitalController {
 		}
 	}
 	
-	@GetMapping
-	ResponseEntity<?> demomethod(){
+	@PostMapping("/donate")
+	ResponseEntity<?> donateBlood(@RequestBody BloodDonationRequest bloodDonationRequest){
 		return new ResponseEntity<>(HttpStatus.OK);	
 	}
 

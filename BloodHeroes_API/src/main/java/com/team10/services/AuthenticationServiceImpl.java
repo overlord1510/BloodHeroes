@@ -60,7 +60,7 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
 				refreshTokenServiceImpl.deleteRefreshToken(userByEmail);
 			}
 			refreshTokenServiceImpl.saveRefreshToken(refreshToken, userByEmail);
-			cookieServiceImpl.createCookie(refreshToken, response);
+			cookieServiceImpl.createCookie(refreshToken, response,request.isRememberMe());
 
 			return AuthenticationResponse.builder().email(request.getEmail()).token(token)
 					.role(userByEmail.getRole().toString()).build();
