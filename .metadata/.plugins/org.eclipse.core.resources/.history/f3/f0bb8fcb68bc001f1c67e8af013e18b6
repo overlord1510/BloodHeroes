@@ -22,8 +22,8 @@ cookie.expiration=600
 #Mail Service Properties
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
-spring.mail.username=your email address
-spring.mail.password=your app secret
+spring.mail.username=mdasadali789@gmail.com
+spring.mail.password=ismw ncgy ceeh gcnd
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
 spring.mail.properties.mail.smtp.connectiontimeout=180000
