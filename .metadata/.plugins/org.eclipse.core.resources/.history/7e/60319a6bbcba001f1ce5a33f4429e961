@@ -1,0 +1,18 @@
+package com.team10.services;
+
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+import com.team10.customExceptions.UserNotFoundException;
+
+@Service
+public class MailServiceImpl implements IMailService {
+	
+	private final JavaMailSender javaMailSender;
+	
+	@Override
+	public void sendOTP(String email) throws UserNotFoundException, MailException {
+		
+	}
+}

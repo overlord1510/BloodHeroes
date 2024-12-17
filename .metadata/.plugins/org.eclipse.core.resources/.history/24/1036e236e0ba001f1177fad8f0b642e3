@@ -1,0 +1,7 @@
+package com.team10.services;
+
+public interface IOtpService {
+	
+	public boolean verifyOTP(int opt);
+	
+}

@@ -1,0 +1,14 @@
+package com.team10.services;
+
+import org.springframework.mail.MailException;
+import org.springframework.stereotype.Service;
+
+import com.team10.customExceptions.UserNotFoundException;
+
+@Service
+public class MailServiceImpl implements IMailService {
+	@Override
+	public void sendOTP(String email) throws UserNotFoundException, MailException {
+		
+	}
+}

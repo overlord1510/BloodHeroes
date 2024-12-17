@@ -1,0 +1,34 @@
+#DataSource Configuration
+spring.application.name=BloodHeroes_API
+spring.datasource.url=jdbc:mysql://localhost:3306/bloodheroes
+spring.datasource.username=root
+spring.datasource.password=A@arshad123
+
+#JPA Configuration
+spring.jpa.open-in-view=true
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.properties.hibernate.format_sql=true
+
+#jwt Config
+jwt.secret.key=5Pr3I6nftYYoddj9j3rQDB0LSWaRcU3LzTqPOMowppOBEzUTcFRZRWN+M2sIo4x9P5V+Iph13YsS7QdasTUZKA==
+# expiration in ms (3 min = 180000ms)
+jwt.token.expiration=180000 
+
+#COOKIE
+#expiration in s (10 min = 600s)
+cookie.expiration=600
+
+#MAIL SERVICE PROPERPERTIES
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=mdasadali789@gmail.com
+spring.mail.password=ismw ncgy ceeh gcnd
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.connectiontimeout=180000
+spring.mail.properties.mail.smtp.timeout=180000
+spring.mail.properties.mail.smtp.writetimeout=180000
+
+#OTP expiration time in ms (15 min = 9000000 ms)
+otp.expiration_time=900000

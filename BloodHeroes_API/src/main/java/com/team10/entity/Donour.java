@@ -1,5 +1,7 @@
 package com.team10.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,6 +32,12 @@ public class Donour {
 	
 	@Column(name = "gender")
 	private String gender;
+	
+	@Column(name="dob")
+	private Date dob;
+	
+	@Column(name="bloodType")
+	private BloodType bloodType;
 	
 	@Column(name = "pincode")
 	private Integer pinCode;

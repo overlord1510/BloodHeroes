@@ -5,16 +5,21 @@ import java.util.UUID;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.team10.config.JwtUtils;
 import com.team10.customExceptions.UserNotEnabledException;
+import com.team10.customExceptions.UserNotFoundException;
 import com.team10.dto.AuthenticationRequest;
 import com.team10.dto.AuthenticationResponse;
+import com.team10.dto.PasswordChangeDTO;
 import com.team10.entity.RefreshToken;
 import com.team10.entity.User;
+import com.team10.repository.UserRepository;
 
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,8 +33,11 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
 	private final JwtUtils jwtUtils;
 	private final CookieServiceImpl cookieServiceImpl;
 	private final RefreshTokenServiceImpl refreshTokenServiceImpl;
+	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	@Override
+	@Transactional
 	public AuthenticationResponse authenticateAndCreateCookie(AuthenticationRequest request,
 			HttpServletResponse response) throws UserNotEnabledException {
 		log.info("Inside Auth Service: {}", request.getEmail());
@@ -60,13 +68,22 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
 				refreshTokenServiceImpl.deleteRefreshToken(userByEmail);
 			}
 			refreshTokenServiceImpl.saveRefreshToken(refreshToken, userByEmail);
-			cookieServiceImpl.createCookie(refreshToken, response,request.isRememberMe());
+			cookieServiceImpl.createCookie(refreshToken, response, request.isRememberMe());
 
 			return AuthenticationResponse.builder().email(request.getEmail()).token(token)
 					.role(userByEmail.getRole().toString()).build();
 		}
 
 		return null;
+	}
+
+	@Override
+	@Transactional
+	public void changePassword(PasswordChangeDTO changeDTO) throws UserNotFoundException {
+		User user = userRepository.findByEmail(changeDTO.getEmail())
+				.orElseThrow(() -> new UserNotFoundException("User not found with email : " + changeDTO.getEmail()));
+		user.setPassword(passwordEncoder.encode(changeDTO.getPassword()));
+		userRepository.save(user);
 	}
 
 }

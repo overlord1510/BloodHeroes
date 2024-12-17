@@ -1,0 +1,22 @@
+package com.team10.services;
+
+import org.springframework.stereotype.Service;
+
+import com.team10.customExceptions.OtpExpiredException;
+import com.team10.customExceptions.OtpNotFoundException;
+import com.team10.repository.OtpRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class OtpServiceImpl implements IOtpService {
+	
+	private final OtpRepository otpRepository;
+	
+@Override
+	public boolean verifyOTP(int opt) throws OtpNotFoundException, OtpExpiredException {
+	otpRepository.find
+		return false;
+	}
+}

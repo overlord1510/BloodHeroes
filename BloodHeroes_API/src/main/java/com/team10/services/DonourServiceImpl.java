@@ -44,6 +44,8 @@ public class DonourServiceImpl implements IDonourService {
 						.isActivated(true)
 						.build())
 				.gender(donourDTO.getGender())
+				.bloodType(donourDTO.getBloodType())
+				.dob(donourDTO.getDob())
 				.pinCode(donourDTO.getPinCode())
 				.addressLine1(donourDTO.getAddressLine1())
 				.addressLine2(donourDTO.getAddressLine2())

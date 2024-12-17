@@ -1,0 +1,11 @@
+package com.team10.services;
+
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class OtpServiceImpl implements IOtpService {
+
+}

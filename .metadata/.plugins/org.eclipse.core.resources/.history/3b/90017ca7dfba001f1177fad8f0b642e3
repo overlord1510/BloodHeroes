@@ -1,0 +1,11 @@
+package com.team10.customExceptions;
+
+public class OTPNotFoundException extends Exception {
+
+	private static final long serialVersionUID = 1L;
+
+	public OTPNotFoundException(String message) {
+		super(message);
+	}
+
+}
