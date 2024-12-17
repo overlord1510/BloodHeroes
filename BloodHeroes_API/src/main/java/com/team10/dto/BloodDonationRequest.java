@@ -20,6 +20,5 @@ public class BloodDonationRequest {
 	private BloodType bloodType;
 	private double amount;
 	private Date donationDate;
-	private Date expirationDate;
 	
 }

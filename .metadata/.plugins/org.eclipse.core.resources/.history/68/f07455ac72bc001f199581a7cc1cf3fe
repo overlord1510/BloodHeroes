@@ -1,0 +1,38 @@
+package com.team10.services;
+
+import org.springframework.stereotype.Service;
+
+import com.team10.customExceptions.UserNotFoundException;
+import com.team10.dto.BloodDonationRequest;
+import com.team10.entity.Donor;
+import com.team10.entity.Hospital;
+import com.team10.repository.DonorRepository;
+import com.team10.repository.HospitalRepository;
+
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class BloodiventoryServiceImpl implements IBloodInventoryService {
+
+	private DonorRepository donourRepository;
+	private HospitalRepository hospitalRepository;
+
+	@Override
+	@Transactional
+	public void addBlood(BloodDonationRequest bloodDonationRequest) throws UserNotFoundException {
+		Donor donor = donourRepository.findByUserEmail(bloodDonationRequest.getDonourEmail())
+				.orElseThrow(() -> new UserNotFoundException(
+						"User not found with email : " + bloodDonationRequest.getDonourEmail()));
+
+		Hospital hospital = hospitalRepository.findByUserEmail(bloodDonationRequest.getHospitalEmail())
+				.orElseThrow(() -> new UserNotFoundException(
+						"User not found with email : " + bloodDonationRequest.getHospitalEmail()));
+
+		// @formatter: off
+		// @formatter: on
+
+	}
+
+}

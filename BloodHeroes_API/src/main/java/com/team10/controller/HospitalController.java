@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.team10.customExceptions.UserNotFoundException;
 import com.team10.dto.BloodDonationRequest;
 import com.team10.dto.HospitalDTO;
+import com.team10.services.IBloodInventoryService;
 import com.team10.services.IHospitalService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 public class HospitalController {
 
 	private final IHospitalService hospitalService;
+	private final IBloodInventoryService bloodInventoryService;
 
 	@PostMapping("/register")
 	ResponseEntity<?> registerHospital(@RequestBody HospitalDTO hospitalDTO) {
@@ -42,10 +45,15 @@ public class HospitalController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+
 	@PostMapping("/donate")
-	ResponseEntity<?> donateBlood(@RequestBody BloodDonationRequest bloodDonationRequest){
-		return new ResponseEntity<>(HttpStatus.OK);	
+	ResponseEntity<?> addBlood(@RequestBody BloodDonationRequest bloodDonationRequest) {
+		try {
+			bloodInventoryService.addBlood(bloodDonationRequest);
+		} catch (UserNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

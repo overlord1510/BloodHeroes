@@ -18,5 +18,10 @@
     "name": "otp.expiration_time",
     "type": "java.lang.String",
     "description": "A description for 'otp.expiration_time'"
+  },
+  {
+    "name": "blood.expiration_time",
+    "type": "java.lang.String",
+    "description": "A description for 'blood.expiration_time'"
   }
 ]}

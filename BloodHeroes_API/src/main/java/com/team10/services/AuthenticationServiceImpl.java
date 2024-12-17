@@ -65,6 +65,7 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
 			RefreshToken refreshTokenByUser = refreshTokenServiceImpl.getRefreshTokenByUser(userByEmail);
 
 			if (refreshTokenByUser != null) {
+				log.info("Refresh Token is present");
 				refreshTokenServiceImpl.deleteRefreshToken(userByEmail);
 			}
 			refreshTokenServiceImpl.saveRefreshToken(refreshToken, userByEmail);

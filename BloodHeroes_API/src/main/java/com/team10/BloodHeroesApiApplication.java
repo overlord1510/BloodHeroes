@@ -29,6 +29,8 @@ public class BloodHeroesApiApplication {
 
 	@PostConstruct
 	public void makeSuperAdmin() {
+		if (userRepository.findAll().size() > 0)
+			return;
 		//@formatter:off
 			userRepository.save(User.builder()
 					.name("SuperAdmin")

@@ -5,12 +5,12 @@ import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.team10.dto.DonourDTO;
-import com.team10.entity.Donour;
+import com.team10.dto.DonorDTO;
+import com.team10.entity.Donor;
 import com.team10.entity.ROLE;
 import com.team10.entity.StateAndUTs;
 import com.team10.entity.User;
-import com.team10.repository.DonourRepository;
+import com.team10.repository.DonorRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DonourServiceImpl implements IDonourService {
 
-	private final DonourRepository donourRepository;
+	private final DonorRepository donourRepository;
 
 	private final PasswordEncoder passwordEncoder;
 
@@ -27,14 +27,14 @@ public class DonourServiceImpl implements IDonourService {
 
 	@Transactional
 	@Override
-	public void saveDonour(DonourDTO donourDTO)
+	public void saveDonour(DonorDTO donourDTO)
 			throws IllegalArgumentException, OptimisticLockingFailureException, DataIntegrityViolationException {
 
 		StateAndUTs stateAndUtsById = stateAndUTsService.getStateAndUtsById(donourDTO.getStateAndUTsID());
 
 		// @formatter:off
 		donourRepository.save(
-				Donour.builder()
+				Donor.builder()
 				.user(User.builder()
 						.name(donourDTO.getName())
 						.email(donourDTO.getEmail())

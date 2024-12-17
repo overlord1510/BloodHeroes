@@ -32,7 +32,7 @@ public class BloodInventory {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "donour_id")
-	private Donour donour;
+	private Donor donour;
 	
 	@Enumerated(EnumType.STRING)
 	private BloodType bloodType;
@@ -46,7 +46,7 @@ public class BloodInventory {
 	@Column(name="expiration_date")
 	private Date expirationDate;
 	
-	@Column(name = "isPositive", nullable = false)
-	private boolean isPositive;
+	@Column(name = "isAccepted", nullable = false)
+	private boolean isAccepted;
 	
 }
